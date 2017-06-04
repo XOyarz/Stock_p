@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+{% extends 'xstock/base.html' %}
 {% load staticfiles %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-    <h1>Welcome to X-Stock</h1>
-    <div>
-        <a href="/xstock/about/">About</a><br/>
-        <a href="/xstock/buy/">Go buy some stocks!</a><br/>
+{% block title_block %}
+    Index
+{% endblock %}
 
-        <img src="{% static "images/one.jpg" %}" alt="Picture of cool pineapple" />
+{% block body_block %}
+    <h1>Welcome to X-Stock</h1>
+    {% if user.is_authenticated %}
+        howdy {{ user.username }}!
+    {% else %}
+        hey there partner!
+    {% endif %}
+    <div>
+        <a href="/xstock/buy/">Go buy some stocks!</a><br/>
+        <img src="{% static "images/one.jpg" height="100" width="100" %}" alt="Picture of cool pineapple" />
     </div>
-</body>
-</html>
+{% endblock %}

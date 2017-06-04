@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Buy2</title>
-</head>
-<body>
+{% extends 'xstock/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Index
+{% endblock %}
+
+{% block body_block %}
     {% if name %}
         You've bought {{ shares }} shares of {{ name }} stock.
     {% endif %}
-</body>
-</html>
+{% endblock %}
