@@ -5,6 +5,7 @@ from xstock.helpers import *
 
 # Create your views here.
 def index(request):
+    print()
     return render(request, 'xstock/index.html')
 
 def about(request):
@@ -25,9 +26,9 @@ def buy(request):
             price = quoted_stock['price']
             symbol = quoted_stock['symbol']
             #shares = quoted_stock['shares']
-            shares = 2
+            shares = data['share_amount']
             total_price = price * int(shares)
-
+            user = user.username
             context_dict = {'name':name, 'price':price, 'symbol':symbol, 'shares':shares, 'total_price':total_price}
             return render(request, 'xstock/buy2.html', context=context_dict)
 

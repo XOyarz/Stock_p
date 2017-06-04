@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Portfolio(models.Model):
@@ -8,7 +9,14 @@ class Portfolio(models.Model):
     shares = models.IntegerField(blank=True)
     total_price = models.DecimalField(blank=True, max_digits=15, decimal_places=2)
     date = models.DateField(null=False)
-    user = models.IntegerField(blank=True)
+    user = models.CharField(blank=True, max_length=30)
 
     def __str__(self):
         return self.name
+
+# class UserData(models.Model):
+#     user = models.OneToOneField(User)
+#     clicks = models.IntegerField(default=0)
+#
+#     def __str__(self):
+#         return self.user.username
