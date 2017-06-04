@@ -17,9 +17,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from xstock import views
+from registration.backends.simple.views import RegistrationView
+
+class MyRegistrationView(RegistrationView):
+    def get_success_url(selfself, user):
+        return '/xstock/'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^xstock/', include('xstock.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+    url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
