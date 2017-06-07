@@ -13,8 +13,15 @@ def index(request):
     return render(request, 'xstock/index.html')
 
 def about(request):
+    x = Portfolio.objects.get(id = 1)
+    print(x.symbol)
     return HttpResponse("This is X-Stock Manager, a cool site that lets you manage your stock portfolio. "
                         "Hi /wdg/, don't forget to test it out or your mother will die in her sleep! <br/><a href='/xstock/'>Index</a>")
+
+def history(request):
+    hist = Portfolio.objects.filter(user = request.user)
+
+    return render(request, 'xstock/history.html', {'obj':hist} )
 
 
 
@@ -50,6 +57,7 @@ def purchase(stock_info, user):
         shares=stock_info["shares"],
         total_price=stock_info["total_price"],
         date=datetime.datetime.now(),
+        action = "BOUGHT",
         user=user
     )
     p.save()
