@@ -9,14 +9,14 @@ class Portfolio(models.Model):
     shares = models.IntegerField(blank=True)
     total_price = models.DecimalField(blank=True, max_digits=15, decimal_places=2)
     date = models.DateField(null=False)
-    user = models.CharField(blank=True, max_length=30)
+    action = models.CharField(max_length=8)
+    user = models.TextField(blank=True, max_length=30)
 
     def __str__(self):
         return self.name
 
-# class UserData(models.Model):
-#     user = models.OneToOneField(User)
-#     clicks = models.IntegerField(default=0)
-#
-#     def __str__(self):
-#         return self.user.username
+
+
+class Wallet(models.Model):
+    user = models.OneToOneField(User)
+    wallet = models.DecimalField(max_digits=15, decimal_places=2, default=5000)

@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from xstock.forms import StockForm
 from xstock.helpers import *
-from xstock.models import Portfolio
+from xstock.models import Portfolio, Wallet
 import datetime
+from decimal import *
 from django.contrib.auth.models import User
 
 
@@ -38,7 +39,14 @@ def buy(request):
             symbol = quoted_stock['symbol']
             #shares = quoted_stock['shares']
             shares = data['share_amount']
-            total_price = price * int(shares)
+            total_price = price * shares
+            print(type(total_price))
+
+            upWallet = Wallet.objects.get(user = request.user)
+            upWallet.wallet -= Decimal(total_price)
+            upWallet.save()
+
+
             user = str(request.user)
             context_dict = {'name':name, 'price':price, 'symbol':symbol, 'shares':shares, 'total_price':total_price, 'user':user}
             purchase(context_dict, user)
