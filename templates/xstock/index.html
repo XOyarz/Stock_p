@@ -12,10 +12,10 @@
     {% else %}
         hey there partner!
     {% endif %}
-    <div>
+    <div class="header" id="header">
         <a href="/xstock/history/">Portfolio History</a><br/>
         <a href="/xstock/buy/">Go buy some stocks!</a><br/>
         <a href="/xstock/summary/">See your summary</a><br/>
-        <img src="{% static "images/one.jpg" height="100" width="100" %}" alt="Picture of cool pineapple" />
+        <img class="image" class="right" src="{% static 'images/one.jpg' height='100' width='100' %}" alt="Picture of cool pineapple" />
     </div>
 {% endblock %}

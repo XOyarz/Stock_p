@@ -4,11 +4,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet"/>
+    <script src="{% static 'js/main.js' %}"></script>
     <title>
         X-Stock
         {% block title_block %}
             Your online Stock Manager!
         {% endblock %}
+
     </title>
 </head>
 <body>
@@ -16,15 +21,47 @@
     {% block body_block %}
     {% endblock %}
 </div>
-    <hr/>
-<div>
-    <ul>
-        <li><a href="{% url 'registration_register' %}">Register</a></li>
-        <li><a href="{% url 'auth_login' %}">Log in</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'index' %}">Index</a></li>
-    </ul>
-</div>
+
+
+
+<footer id="footer">
+				<div class="inner">
+                    <div >
+
+                           <ul> <a href="{% url 'registration_register' %}">Register</a> </ul>
+                           <ul> <a href="{% url 'auth_login' %}">Log in</a></ul>
+                           <ul> <a href="{% url 'about' %}">About</a></ul>
+                          <ul>  <a href="{% url 'index' %}">Index</a></ul>
+
+                    </div>
+
+					<h3>Get in touch</h3>
+
+					<form action="#" method="post">
+
+						<div class="field half first">
+							<label for="name">Name</label>
+							<input name="name" id="name" type="text" placeholder="Name">
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input name="email" id="email" type="email" placeholder="Email">
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input value="Send Message" class="button alt" type="submit"></li>
+						</ul>
+					</form>
+
+					<div class="copyright">
+						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+					</div>
+
+				</div>
+			</footer>
 
 
 </body>
