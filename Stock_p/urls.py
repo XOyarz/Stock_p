@@ -20,7 +20,7 @@ from xstock import views
 from registration.backends.simple.views import RegistrationView
 
 class MyRegistrationView(RegistrationView):
-    def get_success_url(selfself, user):
+    def get_success_url(self, user):
         return '/xstock/'
 
 urlpatterns = [
